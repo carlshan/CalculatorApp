@@ -115,14 +115,12 @@ You’ll notice at the bottom we export the `Style` variable so that it can be u
 Back in the `App.js` file, let’s update our `render()` function to reference the styles we defined in `Style.js`:
 
 ```javascript
-import Style from './Style';
-...
-render () {
-return (
-<View style={Style.rootContainer}>
-    <View style={Style.displayContainer}></View>
-    <View style={Style.inputContainer}></View>
-</View>
-)
+render() {
+    return (
+        <View style={Style.rootContainer}>
+            <View style={Style.displayContainer}></View>
+            <View style={Style.inputContainer}></View>
+        </View>
+    )
 }
 ```
