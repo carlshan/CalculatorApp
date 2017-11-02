@@ -30,6 +30,7 @@ This tutorial on how to create a calculator app follows Kyle Banks' [React Nativ
 import React, { Component } from 'react';
 import {
     Text,
+    View,
     StyleSheet
 } from 'react-native';
 
