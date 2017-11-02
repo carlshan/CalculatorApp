@@ -84,3 +84,6 @@ import {
 	StyleSheet
 } from 'react-native';
 ```
+If you run the application now using `npm start`, you should see the following:
+
+![Calculator](https://kylewbanks.com/images/post/react-native-tutorial-3.png)
