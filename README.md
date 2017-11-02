@@ -28,23 +28,12 @@ class ReactCalculator extends Component {
 
     render() {
         return (
-        <View style={styles.container}>
+        <View style={{flex: 1, alignItems: 'center', 'justifyContent': 'center'}}>
             <Text>Hello, React!</Text>
          </View>
         )
     }
-
 }
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 ```
 3. Run `npm start` in Terminal in the calculatorapp folder and verify that it works by using either the iOS emulator (press `i` when the Terminal tells you to do so to open the emulator) or by using the Expo app on your phone.
@@ -77,6 +66,7 @@ What we’ve done here is create a container `<View>` that wraps the two section
 Inside the container, we create two `<Views>` that take up 20 and 80 percent of the root container, by styling them with `flex: 2` and `flex: 8` respectively. In order to better see the two distinct components, we assign each a background color as well.
 
 You’ll also need to import the `<View>` class from react-native, by adding it to the existing imports at the top of the `App.js` file like so:
+
 ```javascript
 import {
     View,
@@ -84,6 +74,55 @@ import {
 	StyleSheet
 } from 'react-native';
 ```
+
 If you run the application now using `npm start`, you should see the following:
 
 ![Calculator](https://kylewbanks.com/images/post/react-native-tutorial-3.png)
+
+Alright so now we’re starting to look a little like a calculator, but before we continue, we should clean up those styles. The inline styling is great for quickly checking something out, but it can quickly grow into a big ugly mess if it gets out of hand. 
+
+Luckily we aren’t restricted to defining the full styles inline like this, as we can create a StyleSheet that can then be referenced. This also allows us to reuse styles across several components, which we’ll need for our buttons shortly.
+
+### Styling the Calculator
+We're going to make a file called 'Style.js' in which we will include 
+
+Create a new source file called `Style.js` in the `calculatorapp` folder, and copy the following code inside it:
+
+```javascript
+import { StyleSheet } from 'react-native';
+
+var Style = StyleSheet.create({
+    rootContainer: {
+        flex: 1
+    },
+
+    displayContainer: {
+        flex: 2,
+        backgroundColor: '#193441'
+    },
+
+    inputContainer: {
+        flex: 8,
+        backgroundColor: '#3E606F'
+    }
+});
+
+export default Style;
+```
+
+You’ll notice at the bottom we export the `Style` variable so that it can be used by other source files that import `Style.js`, which is exactly what we’re about to do.
+
+Back in the `App.js` file, let’s update our `render()` function to reference the styles we defined in `Style.js`:
+
+```javascript
+import Style from './Style';
+...
+render () {
+return (
+<View style={Style.rootContainer}>
+    <View style={Style.displayContainer}></View>
+    <View style={Style.inputContainer}></View>
+</View>
+)
+}
+```
