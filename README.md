@@ -438,7 +438,6 @@ We’ll start by storing the type of operation and clearing the display whenever
 
 ```javascript
 //App.js
-// ReactCalculator.js
 ...
 
     constructor(props) {
