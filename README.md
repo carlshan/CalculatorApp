@@ -33,7 +33,7 @@ import {
     StyleSheet
 } from 'react-native';
 
-class ReactCalculator extends Component {
+export default class ReactCalculator extends Component {
 
     render() {
         return (
