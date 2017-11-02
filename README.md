@@ -1,5 +1,6 @@
 # React Native Calculator
 *Teacher: Carl Shan*
+*Credit for Tutorial: Kyle Banks*
 
 This tutorial on how to create a calculator app follows Kyle Banks' [React Native Tutorial](https://kylewbanks.com/blog/react-native-tutorial-part-1-hello-react) and modifies it for Intro to Mobile App Development, an elective taught to 7th and 8th grade students at the Nueva Middle School in Fall 2017.
 
@@ -124,3 +125,141 @@ render() {
     )
 }
 ```
+
+### Adding the Input Buttons
+Alright so our base layout is setup and our styles are externalized, so it’s time to add some buttons. We’re going to start by creating an `InputButton.js` file in the `calculatorapp` that will be used for displaying each button on the calculator.
+
+Create the file `InputButton.js` and add the following code to it:
+
+```javascript
+import React, { Component } from 'react';
+import {
+    View,
+    Text
+} from 'react-native';
+
+import Style from './Style';
+
+export default class InputButton extends Component {
+    
+    render() {
+        return (
+            <View style={Style.inputButton}>
+                <Text style={Style.inputButtonText}>{this.props.value}</Text>
+            </View>
+        )
+    }
+    
+}
+```
+
+Two things to note here:
+
+1. We export the class directly using export default on the class definition.
+2. The Text view uses `this.props.value`. Props are essentially static data that we can pass to child components, as we’ll see when we return to the ReactCalculator class shortly.
+
+Let’s add some styles to `Style.js` for our InputButton component:
+
+```javascript
+var Style = StyleSheet.create({
+    ...
+    
+    inputButton: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderWidth: 0.5,
+        borderColor: '#91AA9D'
+    },
+
+    inputButtonText: {
+        fontSize: 22,
+        fontWeight: 'bold',
+        color: 'white'
+    }
+});
+```
+
+With our reusable button defined, we can go back to the ReactCalculator and add our buttons.
+
+Rather than defining the button one-by-one in the render function, let’s try to do this a little more programatically.
+
+First we will define an array that represents the rows and inputs that will be displayed in the calculator. Next, we’ll create a function to dynamically generate the buttons, and call this from within render. This new function,  `_renderInputButtons`, will iterate each row in the inputButtons array, and for each input in the row, create an InputButton and add it to the row.
+
+Let’s take a look at what we are adding to `App.js`:
+```javascript
+import InputButton from './InputButton';
+
+// Define the input buttons that will be displayed in the calculator.
+const inputButtons = [
+    [1, 2, 3, '/'],
+    [4, 5, 6, '*'],
+    [7, 8, 9, '-'],
+    [0, '.', '=', '+']
+];
+
+class ReactCalculator extends Component {
+
+    render() {
+        return (
+            <View style={Style.rootContainer}>
+                <View style={Style.displayContainer}></View>
+                <View style={Style.inputContainer}>
+                    {this._renderInputButtons()}
+                </View>
+            </View>
+        )
+    }
+
+    /**
+     * For each row in `inputButtons`, create a row View and add create an InputButton for each input in the row.
+     */
+    _renderInputButtons() {
+        let views = [];
+
+        for (var r = 0; r < inputButtons.length; r ++) {
+            let row = inputButtons[r];
+
+            let inputRow = [];
+            for (var i = 0; i < row.length; i ++) {
+                let input = row[i];
+
+                inputRow.push(
+                    <InputButton value={input} key={r + "-" + i} />
+                );
+            }
+
+            views.push(<View style={Style.inputRow} key={"row-" + r}>{inputRow}</View>)
+        }
+
+        return views;
+    }
+}
+```
+*Note: The key on the Components within `_renderInputButtons` is required when you are creating an array of Components, and must be unique to each Component in the array.*
+
+This demonstrates how to dynamically create Views, and how to call functions from within your render function. This allows us to create incredibly complex and state dependent interfaces!
+
+If you look closely, you’ll also know we need a new inputRow style in `Style.js`.
+
+Edit `Style.js` to now include the following in the Style variable:
+
+```javascript
+...
+    inputRow: {
+        flex: 1,
+        flexDirection: 'row'
+    }
+...
+```
+
+Alright, give the application a run and you’ll see the calculator laid out like so:
+
+![Calculator UI Finished](https://kylewbanks.com/images/post/react-native-tutorial-4.png)
+
+At this point we have our calculator laid out and styled, but we still need to develop the actual functionality. In the next part of this tutorial, we’ll continue by adding touch event handling, implementing [State](https://facebook.github.io/react-native/docs/state.html) for UI updates, and perform the core arithmetic logic based on user input!
+
+
+
+
+
