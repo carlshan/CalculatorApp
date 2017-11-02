@@ -18,7 +18,13 @@ This tutorial on how to create a calculator app follows Kyle Banks' [React Nativ
 1. Use Atom to open `App.js` and delete all the contents inside.
 2. Copy the following code into the file:
 
+NOTE: The characters "//" (slash-slash) is how you add a comment in JavaScript.
+
+I will add the "//" followed by the name of the file (such as `App.js`) the code section belongs to. Take a look at the example below:
+
 ```javascript
+// App.js
+
 import React, { Component } from 'react';
 import {
     Text,
@@ -52,6 +58,8 @@ The first thing we’ll want to do is layout the calculator. The calculator is g
 Let’s open up the `App.js` source file and create the two sections using flexbox. Go ahead and edit the `render()` function so that it instead looks like the following:
 
 ```javascript
+// App.js
+
 render() {
     return (
         <View style={styles.container}>
@@ -69,6 +77,8 @@ Inside the container, we create two `<Views>` that take up 20 and 80 percent of 
 You’ll also need to import the `<View>` class from react-native, by adding it to the existing imports at the top of the `App.js` file like so:
 
 ```javascript
+//App.js
+
 import {
     View,
     Text,
@@ -90,6 +100,7 @@ We're going to make a file called 'Style.js' in which we will include
 Create a new source file called `Style.js` in the `calculatorapp` folder, and copy the following code inside it:
 
 ```javascript
+// Style.js
 import { StyleSheet } from 'react-native';
 
 var Style = StyleSheet.create({
@@ -116,6 +127,8 @@ You’ll notice at the bottom we export the `Style` variable so that it can be u
 Back in the `App.js` file, let’s update our `render()` function to reference the styles we defined in `Style.js`:
 
 ```javascript
+// App.js
+
 render() {
     return (
         <View style={Style.rootContainer}>
@@ -132,6 +145,8 @@ Alright so our base layout is setup and our styles are externalized, so it’s t
 Create the file `InputButton.js` and add the following code to it:
 
 ```javascript
+//InputButton.js
+
 import React, { Component } from 'react';
 import {
     View,
@@ -161,8 +176,10 @@ Two things to note here:
 Let’s add some styles to `Style.js` for our InputButton component:
 
 ```javascript
+//Style.js
+
 var Style = StyleSheet.create({
-    ...
+    ... // <- Note that when I type '...' it just means I didn't want to type everything that should go here.
     
     inputButton: {
         flex: 1,
@@ -188,6 +205,13 @@ First we will define an array that represents the rows and inputs that will be d
 
 Let’s take a look at what we are adding to `App.js`:
 ```javascript
+//App.js
+import React, { Component } from 'react';
+import {
+    Text,
+    StyleSheet
+} from 'react-native';
+import Style from './Style';
 import InputButton from './InputButton';
 
 // Define the input buttons that will be displayed in the calculator.
@@ -245,6 +269,7 @@ If you look closely, you’ll also know we need a new inputRow style in `Style.j
 Edit `Style.js` to now include the following in the Style variable:
 
 ```javascript
+// Style.js
 ...
     inputRow: {
         flex: 1,
@@ -260,6 +285,27 @@ Alright, give the application a run and you’ll see the calculator laid out lik
 At this point we have our calculator laid out and styled, but we still need to develop the actual functionality. In the next part of this tutorial, we’ll continue by adding touch event handling, implementing [State](https://facebook.github.io/react-native/docs/state.html) for UI updates, and perform the core arithmetic logic based on user input!
 
 
+## Writing the Logic of the Calculator
+
+### Handling Touch Events
+The first thing we need to do before we proceed is to [handle touch events](https://facebook.github.io/react-native/docs/handling-touches.html) on the InputButtons.
+
+First up, we’ll update the InputButton to use a Touchable view instead of the View it currently uses:
 
 
+```javascript
+// InputButton.js
+...
 
+    render() {
+        return (
+            <TouchableHighlight style={Style.inputButton}
+                                underlayColor="#193441"
+                                onPress={this.props.onPress}>
+                <Text style={Style.inputButtonText}>{this.props.value}</Text>
+            </TouchableHighlight>
+        )
+    }
+    
+...
+```
