@@ -1,5 +1,6 @@
 # React Native Calculator
-*Teacher: Carl Shan*
+*Teacher: Carl Shan* 
+
 *Credit for Tutorial: Kyle Banks*
 
 This tutorial on how to create a calculator app follows Kyle Banks' [React Native Tutorial](https://kylewbanks.com/blog/react-native-tutorial-part-1-hello-react) and modifies it for Intro to Mobile App Development, an elective taught to 7th and 8th grade students at the Nueva Middle School in Fall 2017.
@@ -18,13 +19,11 @@ This tutorial on how to create a calculator app follows Kyle Banks' [React Nativ
 1. Use Atom to open `App.js` and delete all the contents inside.
 2. Copy the following code into the file:
 
-NOTE: The characters "//" (slash-slash) is how you add a comment in JavaScript.
-
-I will add the "//" followed by the name of the file (such as `App.js`) the code section belongs to. Take a look at the example below:
+> NOTE: The characters "//" (slash-slash) is how you add a comment in JavaScript.
+> I will add the "//" followed by the name of the file (such as `App.js`) the code section belongs to. Take a look at the example below:
 
 ```javascript
 // App.js
-
 import React, { Component } from 'react';
 import {
     Text,
@@ -48,7 +47,7 @@ class ReactCalculator extends Component {
 
 
 ### Laying Out The Calculator
-(The source of the contente below is from Kyle's blog [here](https://kylewbanks.com/blog/react-native-tutorial-part-2-designing-a-calculator))
+> (The source of the contente below is from Kyle's blog [here](https://kylewbanks.com/blog/react-native-tutorial-part-2-designing-a-calculator))
 
 The first thing we’ll want to do is layout the calculator. The calculator is going to have two primary sections:
 
@@ -201,7 +200,7 @@ With our reusable button defined, we can go back to the ReactCalculator and add 
 
 Rather than defining the button one-by-one in the render function, let’s try to do this a little more programatically.
 
-First we will define an array that represents the rows and inputs that will be displayed in the calculator. Next, we’ll create a function to dynamically generate the buttons, and call this from within render. This new function,  `_renderInputButtons`, will iterate each row in the inputButtons array, and for each input in the row, create an InputButton and add it to the row.
+First we will define an array that represents the rows and inputs that will be displayed in the calculator. Next, we’ll create a function to dynamically generate the buttons, and call this from within `render()`. This new function,  `_renderInputButtons`, will iterate each row in the inputButtons array, and for each input in the row, create an InputButton and add it to the row.
 
 Let’s take a look at what we are adding to `App.js`:
 ```javascript
@@ -309,7 +308,7 @@ First up, we’ll update the InputButton to use a Touchable view instead of the 
 ...
 ```
 
-Don’t forget to import `<TouchableHighlight>` from ```javascript 'react-native'``` at the top of the `App.js` file for this to work! 
+Don’t forget to import `TouchableHighlight` from `'react-native'` at the top of the `App.js` file for this to work! 
 
 You should also notice that we pass on the `onPress` prop to the `<TouchableHighlight>` component, so we’ll need to provide that from our presenting Component:
 
@@ -336,7 +335,7 @@ You should also notice that we pass on the `onPress` prop to the `<TouchableHigh
 
 In the `_renderInputButtons` function we set the `onPress` prop with a reference to a new function called `_onInputButtonPressed`. We also bind the function with a reference to the input value, which will allow us to know what action to take based on which InputButton was clicked.
 
-For now, all we’re doing is calling alert to show a dialog with the input value that was provided. If you’ve been following along closely, you should be able to run and click one of the InputButtons to get something like this (if you are running Android):
+For now, all we’re doing is calling alert to show a dialog with the input value that was provided. If you’ve been following along closely, you should be able to run and click one of the InputButtons to get something like this (if you are running Android, if you're running iOS it will look similar but a little bit different):
 
 ![Calculator Alert](https://kylewbanks.com/images/post/react-native-tutorial-5.png)
 
@@ -384,7 +383,7 @@ Okay, so we have this `inputValue`, but how does it help us? We’ll, we’re go
 ...
 ```
 
-For good measure, here’s the new displayText style and updated displayContainer style as well:
+For good measure, here’s the new `displayText` style and updated `displayContainer` style as well:
 
 ```javascript
 // Style.js
