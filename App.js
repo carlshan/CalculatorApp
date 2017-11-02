@@ -4,7 +4,7 @@ import { Text, StyleSheet } from 'react-native';
 export default class ReactCalculator extends Component {
   render() {
     return (
-        <Text>Hello, React!</Text> asdfjsaljfa
+        <Text>Hello, React!</Text>
     );
   }
 }
