@@ -19,8 +19,11 @@ This tutorial on how to create a calculator app follows Kyle Banks' [React Nativ
 1. Use Atom to open `App.js` and delete all the contents inside.
 2. Copy the following code into the file:
 
-> NOTE: The characters "//" (slash-slash) is how you add a comment in JavaScript.
+> **NOTE**: The characters "//" (slash-slash) is how you add a comment in JavaScript.
+
 > I will add the "//" followed by the name of the file (such as `App.js`) the code section belongs to. Take a look at the example below:
+
+> Also if you see characters `...` in code, it just means that I didn't want to type all the other code that are not relevant to that section of the tutorial.
 
 ```javascript
 // App.js
@@ -85,7 +88,7 @@ import {
 } from 'react-native';
 ```
 
-If you run the application now using `npm start`, you should see the following:
+If you run the application now using `npm start`, you should see something similar to the following:
 
 ![Calculator](https://kylewbanks.com/images/post/react-native-tutorial-3.png)
 
@@ -93,7 +96,7 @@ Alright so now we’re starting to look a little like a calculator, but before w
 
 Luckily we aren’t restricted to defining the full styles inline like this, as we can create a StyleSheet that can then be referenced. This also allows us to reuse styles across several components, which we’ll need for our buttons shortly.
 
-### Styling the Calculator
+### Styling the Calculator: Style.js
 We're going to make a file called 'Style.js' in which we will include 
 
 Create a new source file called `Style.js` in the `calculatorapp` folder, and copy the following code inside it:
@@ -138,7 +141,7 @@ render() {
 }
 ```
 
-### Adding the Input Buttons
+### Adding the Input Buttons: InputButton.js
 Alright so our base layout is setup and our styles are externalized, so it’s time to add some buttons. We’re going to start by creating an `InputButton.js` file in the `calculatorapp` that will be used for displaying each button on the calculator.
 
 Create the file `InputButton.js` and add the following code to it:
@@ -285,6 +288,7 @@ At this point we have our calculator laid out and styled, but we still need to d
 
 
 ## Writing the Logic of the Calculator
+Now that we have the calculator looking like what we want we are going to write the logic that actually implements the calculations!
 
 ### Handling Touch Events
 The first thing we need to do before we proceed is to [handle touch events](https://facebook.github.io/react-native/docs/handling-touches.html) on the InputButtons.
