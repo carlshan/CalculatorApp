@@ -71,6 +71,14 @@ render() {
         </View>
     )
 }
+
+const style = SheetSheet.create({
+    container: {
+	flex: 1,
+	alignItems: 'center',
+	justifyContent: 'center'
+    }
+})
 ```
 
 What we’ve done here is create a container `<View>` that wraps the two sections I mentioned earlier, and takes up the full width and height available by styling it with `flex: 1`. Each Component can only have one root `<View>`, hence why the container is necessary.
