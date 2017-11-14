@@ -63,13 +63,17 @@ Let’s open up the `App.js` source file and create the two sections using flexb
 ```javascript
 // App.js
 
-render() {
-    return (
-        <View style={styles.container}>
-            <View style={{flex: 2, backgroundColor: '#193441'}}></View>
-            <View style={{flex: 8, backgroundColor: '#3E606F'}}></View>
-        </View>
-    )
+export default class ReactCalculator extends Component {
+    ...
+
+    render() {
+        return (
+            <View style={styles.container}>
+                <View style={{flex: 2, backgroundColor: '#193441'}}></View>
+                <View style={{flex: 8, backgroundColor: '#3E606F'}}></View>
+            </View>
+        )
+    }
 }
 
 const styles = StyleSheet.create({
