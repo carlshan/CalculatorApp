@@ -327,28 +327,52 @@ First up, we’ll update the InputButton to use a Touchable view instead of the 
 
 Don’t forget to import `TouchableHighlight` from `'react-native'` at the top of the `App.js` file for this to work! 
 
-You should also notice that we pass on the `onPress` prop to the `<TouchableHighlight>` component, so we’ll need to provide that from our presenting Component:
+You should also notice that we pass on the `onPress` prop to the `<TouchableHighlight>` component, so we’ll need to provide that from our presenting Component.
+
+We also now want change the `_renderInputButtons()` function a little bit.
+
+Replace the part of the `inputRow.push()` part of the function with the following:
 
 ```javascript
-// App.js
-...
-
     _renderInputButtons() {
         ...
+        // REPLACE THE OLD  inputRow.push() WITH THE BELOW
         inputRow.push(
             <InputButton
                 value={input}
                 onPress={this._onInputButtonPressed.bind(this, input)}
                 key={r + "-" + i}/>
         );
+        ...
     }
-    
+```
+
+In addition, we're going to make a new function that simply alerts us when a button is pressed.
+
+```javascript
+// App.js
+...
+export default class ReactCalculator extends Component {
+
+	render() {
+		...
+	}
+	
+	_renderInputButtons() {
+		...
+	}
+   
+    // COPY AND PASTE THE FUNCTION BELOW 
     _onInputButtonPressed(input) {
         alert(input)
     }
-    
+}
 ...
 ```
+
+Now try pressing buttons on your calculator!
+
+So how does this all work?
 
 In the `_renderInputButtons` function we set the `onPress` prop with a reference to a new function called `_onInputButtonPressed`. We also bind the function with a reference to the input value, which will allow us to know what action to take based on which InputButton was clicked.
 
