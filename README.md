@@ -160,7 +160,7 @@ Alright so our base layout is setup and our styles are externalized, so it’s t
 Create the file `InputButton.js` and add the following code to it:
 
 ```javascript
-//InputButton.js
+// InputButton.js
 
 import React, { Component } from 'react';
 import {
@@ -237,7 +237,7 @@ const inputButtons = [
     [0, '.', '=', '+']
 ];
 
-class ReactCalculator extends Component {
+export default class ReactCalculator extends Component {
 
     render() {
         return (
@@ -334,6 +334,7 @@ We also now want change the `_renderInputButtons()` function a little bit.
 Replace the part of the `inputRow.push()` part of the function with the following:
 
 ```javascript
+// App.js
     _renderInputButtons() {
         ...
         // REPLACE THE OLD  inputRow.push() WITH THE BELOW
@@ -353,12 +354,11 @@ In addition, we're going to make a new function that simply alerts us when a but
 // App.js
 ...
 export default class ReactCalculator extends Component {
-
-	render() {
+    render() {
 		...
 	}
 	
-	_renderInputButtons() {
+    _renderInputButtons() {
 		...
 	}
    
@@ -390,7 +390,7 @@ First, let’s add a constructor to our ReactCalculator class to initialize the 
 ```javascript
 // App.js
 ...
-class ReactCalculator extends Component {
+export default class ReactCalculator extends Component {
     
     constructor(props) {
         super(props);
