@@ -3,7 +3,7 @@
 
 *Credit for Tutorial: Kyle Banks*
 
-This tutorial on how to create a calculator app follows Kyle Banks' [React Native Tutorial](https://kylewbanks.com/blog/react-native-tutorial-part-1-hello-react) and modifies it for Intro to Mobile App Development, an elective taught to 7th and 8th grade students at the Nueva Middle School in Fall 2017.
+This tutorial on how to create a calculator app is adapted from Kyle Banks' [React Native Tutorial](https://kylewbanks.com/blog/react-native-tutorial-part-1-hello-react) and modifies it for Intro to Mobile App Development, an elective at the Nueva Middle School in Fall 2017 and Spring 2018.
 
 ## Instructions
 
@@ -51,7 +51,7 @@ export default class ReactCalculator extends Component {
 
 
 ### Laying Out The Calculator
-> (The source of the contente below is from Kyle's blog [here](https://kylewbanks.com/blog/react-native-tutorial-part-2-designing-a-calculator))
+> (The source of the content below is from Kyle's blog [here](https://kylewbanks.com/blog/react-native-tutorial-part-2-designing-a-calculator))
 
 The first thing we’ll want to do is layout the calculator. The calculator is going to have two primary sections:
 
@@ -592,7 +592,8 @@ Here we ensure a `selectedSymbol` is set. Assuming it is, we clear the `previous
 Here’s a look at what `24 / 3` looks like:
 
 ![24 / 3](https://kylewbanks.com/images/post/react-native-tutorial-6.png)
-Now we know!
+
+Now we are done!
 
 ### Where To Go From Here
 Even though the tutorial has come to an end, there are a couple of intentionally unhandled components that you can try to solve on your own from here:
